@@ -10,7 +10,7 @@ class StatisticsItem:
     year: int = None
     town_name: str = None
     sales_ratio: Decimal = 0
-    sales_amount: Decimal = 0
+    sales_volume: Decimal = 0
 
 
 class RealEstateStatisticsAccumulator:
@@ -40,7 +40,7 @@ class RealEstateStatisticsAccumulator:
         statistics_item.sales_ratio = max(statistics_item.sales_ratio, transaction.sales_ratio)
 
     def _obtain_sale_amount(self, statistics_item: StatisticsItem, transaction: RealEstateTransaction):
-        statistics_item.sales_amount += transaction.sale_amount
+        statistics_item.sales_volume += transaction.sale_amount
 
     #################################
     # Statistics retrieving functions
@@ -53,9 +53,9 @@ class RealEstateStatisticsAccumulator:
         statistics = sorted(statistics, key=lambda x: -x.sales_ratio)
         return statistics[:number_of_records]
 
-    def get_year_top_by_sales_amount(self, year: int, number_of_records: int) -> List[StatisticsItem]:
+    def get_year_top_by_sales_volume(self, year: int, number_of_records: int) -> List[StatisticsItem]:
         statistics = self.statistics[year].values()
-        statistics = sorted(statistics, key=lambda x: -x.sales_amount)
+        statistics = sorted(statistics, key=lambda x: -x.sales_volume)
         return statistics[:number_of_records]
 
 

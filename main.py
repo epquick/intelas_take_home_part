@@ -11,7 +11,7 @@ if __name__ == '__main__':
     years = statistics.get_available_years()
     for year in years:
         top_towns_by_sales_ratio = statistics.get_year_top_by_sales_ratio(year, 10)
-        top_towns_by_sales_amount = statistics.get_year_top_by_sales_amount(year, 10)
+        top_towns_by_sales_amount = statistics.get_year_top_by_sales_volume(year, 10)
 
         print('###', year)
         print('Top 10 towns by sales ratio:  ', ', '.join([t.town_name for t in top_towns_by_sales_ratio]))

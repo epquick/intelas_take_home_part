@@ -38,26 +38,29 @@ class SocrataTransactionHistoryGrabber:
     def _validate_transaction_data(cls, transaction_data):
         if type(transaction_data) != dict:
             raise SocrataError
-        if not (transaction_data.get('town') and transaction_data.get('saleamount') and
-                transaction_data.get('salesratio') and transaction_data.get('daterecorded')):
+        if not cls._check_string(transaction_data.get('town')):
             raise SocrataError
-        if not cls._validate_number(transaction_data.get('saleamount')):
+        if not cls._check_number(transaction_data.get('saleamount')):
             raise SocrataError
-        if not cls._validate_number(transaction_data.get('salesratio')):
+        if not cls._check_number(transaction_data.get('salesratio')):
             raise SocrataError
-        if not cls._validate_date(transaction_data.get('daterecorded')):
+        if not cls._check_date(transaction_data.get('daterecorded')):
             raise SocrataError
 
     @classmethod
-    def _validate_number(cls, string):
-        return string.replace('.', '', 1).isdigit()
+    def _check_string(cls, value):
+        return value and type(value) == str
+
+    @classmethod
+    def _check_number(cls, value):
+        return cls._check_string(value) and value.replace('.', '', 1).isdigit()
 
     regex_iso8601 = r'^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?$'
     match_iso8601 = re.compile(regex_iso8601).match
 
     @classmethod
-    def _validate_date(cls, string):
-        return cls.match_iso8601(string) is not None
+    def _check_date(cls, value):
+        return cls._check_string(value) and cls.match_iso8601(value) is not None
 
     @classmethod
     def _parse_data(cls, socrata_data) -> List[RealEstateTransaction]:

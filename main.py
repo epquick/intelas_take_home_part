@@ -1,5 +1,5 @@
 from socrata import SocrataTransactionHistoryGrabber
-from statistics import RealEstateStatisticsAccumulator
+from statistics_ import RealEstateStatisticsAccumulator
 
 
 if __name__ == '__main__':

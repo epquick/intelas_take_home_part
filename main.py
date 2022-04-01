@@ -15,4 +15,4 @@ if __name__ == '__main__':
 
         print('###', year)
         print('Top 10 towns by sales ratio:  ', ', '.join([t.town_name for t in top_towns_by_sales_ratio]))
-        print('Top 10 towns by sales amount: ', ', '.join([t.town_name for t in top_towns_by_sales_amount]))
+        print('Top 10 towns by sales volume: ', ', '.join([t.town_name for t in top_towns_by_sales_amount]))

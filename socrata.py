@@ -1,5 +1,6 @@
 import json
 import urllib.request
+from decimal import Decimal
 from json import JSONDecodeError
 from typing import List
 from urllib.error import URLError
@@ -65,8 +66,8 @@ class SocrataTransactionHistoryGrabber:
     @classmethod
     def _parse_transaction_data(cls, transaction_data) -> RealEstateTransaction:
         return RealEstateTransaction(town_name=transaction_data['town'],
-                                     sale_amount=float(transaction_data['saleamount']),
-                                     sales_ratio=float(transaction_data['salesratio']),
+                                     sale_amount=Decimal(transaction_data['saleamount']),
+                                     sales_ratio=Decimal(transaction_data['salesratio']),
                                      year=int(transaction_data['daterecorded'][:4]))
 
 

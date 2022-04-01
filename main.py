@@ -1,11 +1,11 @@
 from socrata import SocrataTransactionHistoryGrabber
-from statistics import RealEstateStatistics
+from statistics import RealEstateStatisticsAccumulator
 
 
 if __name__ == '__main__':
     transactions_list = SocrataTransactionHistoryGrabber.grab()
 
-    statistics = RealEstateStatistics()
+    statistics = RealEstateStatisticsAccumulator()
     statistics.add_transactions(transactions_list)
 
     years = statistics.get_available_years()

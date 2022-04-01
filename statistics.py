@@ -13,7 +13,7 @@ class StatisticsItem:
     sales_amount: Decimal = 0
 
 
-class RealEstateStatistics:
+class RealEstateStatisticsAccumulator:
     statistics: {int: {str: StatisticsItem}} = {}  # {year: {town_name: StatisticsItem}}
 
     #################################

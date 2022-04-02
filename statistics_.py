@@ -27,7 +27,7 @@ class RealEstateStatisticsAccumulator:
         statistics_item = self._get_statistics_item(transaction.year, transaction.town_name)
 
         self._obtain_sales_ratio(statistics_item, transaction)
-        self._obtain_sale_amount(statistics_item, transaction)
+        self._obtain_sales_valume(statistics_item, transaction)
 
     def _get_statistics_item(self, year: int, town_name: str) -> StatisticsItem:
         if year not in self.statistics:
@@ -39,7 +39,7 @@ class RealEstateStatisticsAccumulator:
     def _obtain_sales_ratio(self, statistics_item: StatisticsItem, transaction: RealEstateTransaction):
         statistics_item.sales_ratio = max(statistics_item.sales_ratio, transaction.sales_ratio)
 
-    def _obtain_sale_amount(self, statistics_item: StatisticsItem, transaction: RealEstateTransaction):
+    def _obtain_sales_valume(self, statistics_item: StatisticsItem, transaction: RealEstateTransaction):
         statistics_item.sales_volume += transaction.sale_amount
 
     #################################

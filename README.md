@@ -1,4 +1,4 @@
-To run this program run
+To run this program use
 ```
 python main.py
 ```

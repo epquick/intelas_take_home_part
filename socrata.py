@@ -68,10 +68,10 @@ class SocrataTransactionHistoryGrabber:
 
     @classmethod
     def _parse_transaction_data(cls, transaction_data) -> RealEstateTransaction:
-        return RealEstateTransaction(town_name=transaction_data['town'],
-                                     sale_amount=Decimal(transaction_data['saleamount']),
-                                     sales_ratio=Decimal(transaction_data['salesratio']),
-                                     year=int(transaction_data['daterecorded'][:4]))
+        return RealEstateTransaction(year=int(transaction_data['daterecorded'][:4]),
+                                     town_name=transaction_data['town'],
+                                     sales_ratio=float(transaction_data['salesratio']),
+                                     sale_amount=Decimal(transaction_data['saleamount']))
 
 
 class SocrataError(Exception):

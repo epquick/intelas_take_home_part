@@ -6,6 +6,6 @@ from decimal import Decimal
 class RealEstateTransaction:
     year: int
     town_name: str
-    sales_ratio: Decimal
+    sales_ratio: float
     sale_amount: Decimal
 

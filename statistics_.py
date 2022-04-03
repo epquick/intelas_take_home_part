@@ -7,9 +7,9 @@ from models import RealEstateTransaction
 
 @dataclass
 class StatisticsItem:
-    year: int = None
-    town_name: str = None
-    sales_ratio: Decimal = 0
+    year: int
+    town_name: str
+    sales_ratio: float = 0
     sales_volume: Decimal = 0
 
 

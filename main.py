@@ -1,9 +1,9 @@
-from socrata import SocrataGrabber
+from socrata import SocrataAPI
 from statistics_ import RealEstateStatisticsAccumulator
 
 
 if __name__ == '__main__':
-    transactions = SocrataGrabber.grab_transactions_history()
+    transactions = SocrataAPI.get_transactions_history()
 
     statistics = RealEstateStatisticsAccumulator()
     statistics.add_transactions(transactions)

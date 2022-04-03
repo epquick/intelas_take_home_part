@@ -9,11 +9,11 @@ import re
 from models import RealEstateTransaction
 
 
-class SocrataGrabber:
+class SocrataAPI:
     API_URL = 'https://data.ct.gov/resource/5mzw-sjtu.json'
 
     @classmethod
-    def grab_transactions_history(cls) -> List[RealEstateTransaction]:
+    def get_transactions_history(cls) -> List[RealEstateTransaction]:
         socrata_data = cls._download_data()
         cls._validate_data(socrata_data)
         return cls._parse_data(socrata_data)

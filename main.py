@@ -3,10 +3,10 @@ from statistics_ import RealEstateStatisticsAccumulator
 
 
 if __name__ == '__main__':
-    transactions_list = SocrataGrabber.grab_transactions_history()
+    transactions = SocrataGrabber.grab_transactions_history()
 
     statistics = RealEstateStatisticsAccumulator()
-    statistics.add_transactions(transactions_list)
+    statistics.add_transactions(transactions)
 
     years = statistics.get_available_years()
     for year in years:

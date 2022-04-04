@@ -10,7 +10,7 @@ class StatisticsItem:
     year: int
     town_name: str
     sales_ratio: float = 0
-    sales_volume: Decimal = 0
+    sales_volume: Decimal = Decimal(0)
 
 
 class RealEstateStatisticsAccumulator:

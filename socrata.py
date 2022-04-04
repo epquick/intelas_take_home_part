@@ -49,7 +49,7 @@ class SocrataAPI:
 
     @classmethod
     def _check_string(cls, value):
-        return value and type(value) == str
+        return type(value) == str and value
 
     @classmethod
     def _check_number(cls, value):

@@ -1,5 +1,5 @@
 from socrata import SocrataAPI
-from statistics_ import RealEstateStatisticsAccumulator
+from statistics_accumulator import RealEstateStatisticsAccumulator
 
 
 if __name__ == '__main__':
